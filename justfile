@@ -1,4 +1,4 @@
-host := "localhost"
+host := env_var_or_default("MQTT_BROKER", "localhost")
 
 # Mostrar comandos disponibles
 default:

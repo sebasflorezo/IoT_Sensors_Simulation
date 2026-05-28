@@ -15,9 +15,9 @@ from sensor_types import (
 
 
 def main() -> None:
-    sensor_temp = Sensor("TempSensor", "Temperatura", temperatura)
-    sensor_hum = Sensor("HumeSensor", "Humedad", humedad)
-    sensor_press = Sensor("PressSensor", "Presión", presion)
+    mqtt_broker = os.environ.get("MQTT_BROKER", "localhost")
+    mqtt_port = int(os.environ.get("MQTT_PORT", "1883"))
+    mqtt_prefix = os.environ.get("MQTT_TOPIC_PREFIX", "casa")
 
     cloud_1 = MQTTClient(
         node="nodo_1",
