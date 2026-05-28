@@ -1,0 +1,57 @@
+import random
+import time
+import requests
+
+
+class Sensor:
+    actual_node: int = 0
+
+    def __init__(self, name, data_type, data_function):
+        self.name = name
+        self.data_type = data_type
+        self.data_function = data_function
+
+        Sensor.actual_node += 1
+        self.node_number: int = Sensor.actual_node
+
+    def get_data(self):
+        return self.data_function()
+
+    def __str__(self):
+        value = self.get_data()
+        return f"{self.name}\t - SENSOR_{self.node_number} | {self.data_type}: {value}"
+
+
+def temperatura():
+    return f"{round(random.uniform(20, 40), 2)}°C"
+
+
+def humedad():
+    return f"{round(random.uniform(30, 90), 2)}%"
+
+
+def presion():
+    return f"{round(random.uniform(900, 1100), 2)}hPa"
+
+
+def main():
+    sensor_temp = Sensor("TempSensor", "Temperatura", temperatura)
+    sensor_hum = Sensor("HumeSensor", "Humedad", humedad)
+    sensor_press = Sensor("PressSensor", "Presión", presion)
+    try:
+        while True:
+            print("- Sensores ", "-" * 38)
+            print(sensor_temp)
+            print(sensor_hum)
+            print(sensor_press)
+            print("-" * 50)
+
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nSaliendo...")
+    finally:
+        print("Programa detenido con éxito")
+
+
+if __name__ == "__main__":
+    main()
