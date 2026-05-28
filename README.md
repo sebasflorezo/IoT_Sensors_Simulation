@@ -5,9 +5,9 @@ y envía los datos a un broker MQTT local (Mosquitto).
 
 ## Dependencias
 
-- Mosquitto (broker MQTT)
-- mosquitto-clients (para poder usar `mosquitto_sub` y `mosquitto_pub`)
 - Python ≥ 3.13
+- mosquitto (broker MQTT)
+- mosquitto-clients (para poder usar `mosquitto_sub` y `mosquitto_pub`)
 - [uv](https://github.com/astral-sh/uv) 
 - [just](https://github.com/casey/just)
 
