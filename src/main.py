@@ -1,6 +1,7 @@
 import os
 import time
-
+from pathlib import Path
+from dotenv import load_dotenv
 from cloud import MQTTClient
 from sensor import Sensor
 from sensor_types import (
@@ -15,6 +16,7 @@ from sensor_types import (
 
 
 def main() -> None:
+    load_dotenv(Path(__file__).parent.parent / ".env")
     mqtt_broker = os.environ.get("MQTT_BROKER", "localhost")
     mqtt_port = int(os.environ.get("MQTT_PORT", "1883"))
     mqtt_prefix = os.environ.get("MQTT_TOPIC_PREFIX", "casa")
