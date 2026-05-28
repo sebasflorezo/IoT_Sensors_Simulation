@@ -1,4 +1,5 @@
 host := env_var_or_default("MQTT_BROKER", "localhost")
+topic_prefix := env_var_or_default("MQTT_TOPIC_PREFIX", "casa")
 
 # Mostrar comandos disponibles
 default:
@@ -12,14 +13,14 @@ run:
 all:
     mosquitto_sub -h {{host}} -t "#" -v
 
-# Leer todos los topics bajo casa/
-casa:
-    mosquitto_sub -h {{host}} -t "casa/#" -v
+# Leer todos los topics de un prefijo específico
+topic t:
+    mosquitto_sub -h {{host}} -t "{{t}}/#" -v
 
 # Leer solo los topics de un nodo específico
 node n:
-    mosquitto_sub -h {{host}} -t "casa/{{n}}/#" -v
+    mosquitto_sub -h {{host}} -t "{{topic_prefix}}/{{n}}/#" -v
 
 # Leer un sensor específico de cualquier nodo
 sensor s:
-    mosquitto_sub -h {{host}} -t "casa/+/{{s}}" -v
+    mosquitto_sub -h {{host}} -t "{{topic_prefix}}/+/{{s}}" -v
