@@ -1,5 +1,5 @@
 [project]
-name = "test-1"
+name = "iot-sensors-simulation"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
