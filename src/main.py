@@ -1,7 +1,8 @@
 import time
 
 from cloud import MQTTClient
-from sensor import Sensor, humedad, presion, temperatura
+from sensor import Sensor
+from sensor_types import humedad, presion, temperatura
 
 
 def main() -> None:
