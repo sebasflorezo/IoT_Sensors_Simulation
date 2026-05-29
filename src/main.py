@@ -1,8 +1,6 @@
 import logging
 import os
-
 from dotenv import load_dotenv
-
 from builder import build_readings
 from core import run_loop
 from loader import load_yaml
@@ -17,9 +15,7 @@ def main() -> None:
     log_config = config.get("logging", {})
     logging.basicConfig(
         level=getattr(logging, log_config.get("level", "INFO")),
-        format=log_config.get(
-            "format", "%(asctime)s | %(levelname)-5s | %(message)s"
-        ),
+        format=log_config.get("format", "%(asctime)s | %(levelname)-5s | %(message)s"),
         datefmt=log_config.get("datefmt"),
     )
 

@@ -1,8 +1,6 @@
 import json
-from datetime import datetime, timezone
-
 import paho.mqtt.client as mqtt
-
+from datetime import datetime, timezone
 from models import Valor
 from sensor import Sensor
 
