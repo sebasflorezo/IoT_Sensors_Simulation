@@ -1,6 +1,5 @@
 from threading import Lock
 from typing import Callable, ClassVar
-
 from models import Valor
 
 

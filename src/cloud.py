@@ -10,9 +10,9 @@ class MQTTClient:
     def __init__(
         self,
         node: str,
-        broker: str = "localhost",
-        port: int = 1883,
-        topic_prefix: str = "casa",
+        broker: str,
+        port: int,
+        topic_prefix: str,
     ) -> None:
         self.client = mqtt.Client()
         self.client.connect(broker, port)

@@ -1,5 +1,6 @@
 import random
-
+from dataclasses import dataclass
+from typing import Callable
 from models import Valor
 
 
@@ -10,6 +11,12 @@ LIGHT_RANGE = (0.0, 100000.0)
 AQI_RANGE = (0.0, 500.0)
 NOISE_RANGE = (30.0, 120.0)
 CO2_RANGE = (400.0, 2000.0)
+
+
+@dataclass
+class SensorTypeInfo:
+    fn: Callable[[], Valor]
+    label: str
 
 
 def temperatura() -> Valor:
@@ -38,3 +45,14 @@ def ruido() -> Valor:
 
 def co2() -> Valor:
     return Valor(round(random.uniform(*CO2_RANGE), 1), "ppm")
+
+
+SENSOR_TYPES: dict[str, SensorTypeInfo] = {
+    "temperatura": SensorTypeInfo(fn=temperatura, label="Temperatura"),
+    "humedad": SensorTypeInfo(fn=humedad, label="Humedad"),
+    "presion": SensorTypeInfo(fn=presion, label="Presión"),
+    "luz": SensorTypeInfo(fn=luz, label="Luz"),
+    "calidad_aire": SensorTypeInfo(fn=calidad_aire, label="Calidad de Aire"),
+    "ruido": SensorTypeInfo(fn=ruido, label="Ruido"),
+    "co2": SensorTypeInfo(fn=co2, label="CO2"),
+}
