@@ -3,13 +3,15 @@ import os
 from dotenv import load_dotenv
 from builder import build_readings
 from core import run_loop
-from loader import load_yaml
+from loader import load_yaml, validate_nodes
 
 load_dotenv()
 
 
 def main() -> None:
-    nodes = load_yaml("nodes.yml")["nodes"]
+    raw = load_yaml("nodes.yml")
+    validate_nodes(raw)
+    nodes = raw["nodes"]
     config = load_yaml("config.yml")
 
     log_config = config.get("logging", {})
