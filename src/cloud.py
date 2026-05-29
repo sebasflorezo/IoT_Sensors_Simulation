@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timezone
 
 import paho.mqtt.client as mqtt
 
@@ -25,6 +26,7 @@ class MQTTClient:
             "type": sensor.data_type,
             "value": valor.value,
             "unit": valor.unit,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }
         topic = f"{self.topic_prefix}/{self.node}/{sensor.name.lower()}"
         self.client.publish(topic, json.dumps(payload, ensure_ascii=False))
