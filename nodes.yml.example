@@ -1,0 +1,26 @@
+nodes:
+  - name: nodo_1
+    sensors:
+      - alias: TempSensor
+        type: temperatura
+        label: Temperatura
+      - alias: HumeSensor
+        type: humedad
+        label: Humedad
+      - alias: LightSensor
+        type: luz
+        label: Luz
+      - alias: AQISensor
+        type: calidad_aire
+        label: Calidad de Aire
+  - name: nodo_2
+    sensors:
+      - alias: PressSensor
+        type: presion
+        label: Presión
+      - alias: NoiseSensor
+        type: ruido
+        label: Ruido
+      - alias: CO2Sensor
+        type: co2
+        label: CO2
